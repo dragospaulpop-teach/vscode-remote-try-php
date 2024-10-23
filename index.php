@@ -20,8 +20,20 @@ function sayHello($name) {
 		
 		sayHello('remote world');
 			
-		phpinfo(); 
-			
+		// phpinfo(); 
+
+		$conn = mysqli_connect("127.0.0.1", "mariadb", "mariadb", "mariadb");
+
+		$sql = "select * from test";
+
+		$result = mysqli_query($conn, $sql);
+
+		while($row = mysqli_fetch_assoc($result)) {
+			echo "<pre>";
+			var_dump($row);
+			echo "</pre>";
+		}
+		
 		?>
 	</body>
 </html>
