@@ -24,7 +24,7 @@ function sayHello($name) {
 
 		$conn = mysqli_connect("127.0.0.1", "mariadb", "mariadb", "mariadb");
 
-		$sql = "select * from test";
+		$sql = "select * from test order by id asc";
 
 		$result = mysqli_query($conn, $sql);
 
