@@ -8,6 +8,11 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # Install php-mysql driver
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
+# Configure Apache to listen on port 8080
+RUN sed -i 's/Listen 80$//' /etc/apache2/ports.conf && \
+    sed -i 's/<VirtualHost \\*:80>/ServerName 127.0.0.1\n<VirtualHost *:8080>/' /etc/apache2/sites-available/000-default.conf && \
+    apache2ctl restart
+
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
