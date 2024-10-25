@@ -20,15 +20,13 @@
 		"vscode": {
 			"extensions": [
 				"ikappas.composer",
-				"junstyle.php-cs-fixer"
+				"bmewburn.vscode-intelephense-client" // Intelephense extension ID
 			],
 			"settings": {
 				"editor.formatOnSave": true,
 				"[php]": {
-					"editor.defaultFormatter": "junstyle.php-cs-fixer"
-				},
-				"php-cs-fixer.executablePath": "${workspaceFolder}/vendor/bin/php-cs-fixer",
-				"php-cs-fixer.rules": "@PSR2"
+					"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+				}
 			}
 		}
 	}
