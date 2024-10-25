@@ -16,7 +16,8 @@
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.	
-	"postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html; if [ -f composer.json ];then composer install;fi",
+	"postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html && if [ -f composer.json ]; then composer install; fi && sed -i '/^Listen 80/d' /etc/apache2/ports.conf && sed -i 's/<VirtualHost \\*>/<VirtualHost *:8080>/' /etc/apache2/sites-available/000-default.conf && sudo service apache2 restart",
+
 
 
 	// Configure tool-specific properties.
