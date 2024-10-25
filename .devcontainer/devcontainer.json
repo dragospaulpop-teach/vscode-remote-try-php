@@ -5,7 +5,6 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-
 	// For use with PHP or Apache (e.g.php -S localhost:8080 or apache2ctl start)
 	"forwardPorts": [
 		8080,
@@ -14,10 +13,8 @@
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
-
 	// Use 'postCreateCommand' to run commands after the container is created.	
-	"postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html; if [ -f composer.json ]; then composer install; fi; composer global require friendsofphp/php-cs-fixer",
-
+	"postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html; if [ -f composer.json ]; then composer install; fi",
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
@@ -30,12 +27,11 @@
 				"[php]": {
 					"editor.defaultFormatter": "junstyle.php-cs-fixer"
 				},
-				"php-cs-fixer.executablePath": "/github/home/.composer/vendor/bin/php-cs-fixer",
+				"php-cs-fixer.executablePath": "${workspaceFolder}/vendor/bin/php-cs-fixer",
 				"php-cs-fixer.rules": "@PSR2"
 			}
 		}
-	}  
-
+	}
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
